@@ -75,6 +75,3 @@ Para executar a aplicação localmente, siga os passos abaixo:
 
     A aplicação estará acessível em `http://localhost:8080` dentro do contêiner.
 
-## Contribuição
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests no repositório.
