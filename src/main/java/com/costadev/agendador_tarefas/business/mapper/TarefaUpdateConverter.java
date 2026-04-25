@@ -4,7 +4,6 @@ import com.costadev.agendador_tarefas.business.dto.TarefasDTO;
 import com.costadev.agendador_tarefas.infrasctruture.entity.TarefasEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.NullValueMappingStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

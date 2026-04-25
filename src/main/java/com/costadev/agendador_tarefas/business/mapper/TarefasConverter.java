@@ -3,7 +3,6 @@ package com.costadev.agendador_tarefas.business.mapper;
 import com.costadev.agendador_tarefas.business.dto.TarefasDTO;
 import com.costadev.agendador_tarefas.infrasctruture.entity.TarefasEntity;
 import org.mapstruct.Mapper;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring")

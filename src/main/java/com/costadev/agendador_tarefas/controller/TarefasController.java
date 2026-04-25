@@ -3,7 +3,6 @@ package com.costadev.agendador_tarefas.controller;
 
 import com.costadev.agendador_tarefas.business.TarefasService;
 import com.costadev.agendador_tarefas.business.dto.TarefasDTO;
-import com.costadev.agendador_tarefas.infrasctruture.entity.TarefasEntity;
 import com.costadev.agendador_tarefas.infrasctruture.enums.StatusNotificacaoEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
