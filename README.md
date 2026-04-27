@@ -1,77 +1,96 @@
-# Projeto Agendador de Tarefas
+# 🗓️ Agendador de Tarefas
 
-## Descrição
+Microserviço responsável pelo gerenciamento completo do ciclo de vida das tarefas, com **agendamento automático via Cron**, notificações por e-mail e persistência em **MongoDB**.
 
-Este projeto é uma aplicação Spring Boot desenvolvida para agendamento e gerenciamento de tarefas. Ele utiliza Java 21 e Gradle para construção, integrando-se com funcionalidades de segurança com Spring Security, persistência de dados com Spring Data JPA e comunicação entre serviços com OpenFeign. O projeto é conteinerizado com Docker para facilitar a implantação.
+🔗 **API em produção:** [agendador-tarefas-production.up.railway.app](https://agendador-tarefas-production.up.railway.app)
 
-## Tecnologias Utilizadas
+---
 
-As principais tecnologias e ferramentas utilizadas neste projeto incluem:
+## 📌 Sobre o Projeto
 
-*   **Java 21**: Linguagem de programação principal.
-*   **Spring Boot 3.2.5**: Framework para construção de aplicações Java robustas e eficientes.
-*   **Gradle**: Ferramenta de automação de build.
-*   **Spring Data JPA**: Para persistência de dados e interação com o banco de dados.
-*   **Spring Security**: Para autenticação e autorização.
-*   **Spring Boot Starter Web**: Para a construção de aplicações web e APIs RESTful.
-*   **Spring Cloud Starter OpenFeign**: Para comunicação declarativa entre serviços.
-*   **Lombok**: Para reduzir o código boilerplate.
-*   **MySQL Connector/J**: Driver JDBC para conexão com MySQL.
-*   **JUnit 5**: Para testes unitários e de integração.
-*   **SonarQube**: Para análise de qualidade de código.
-*   **Docker**: Para conteinerização da aplicação.
+Este serviço é o núcleo do ecossistema de agendamento. Ele gerencia a criação, atualização e execução automática das tarefas, garantindo que notificações e lembretes sejam enviados nos momentos corretos.
 
-## Estrutura do Projeto
+| Serviço | Responsabilidade |
+|---|---|
+| [BFF Agendador](https://github.com/guilhermeoliveira-software/bff-agendador-tarefas) | Orquestração e gateway para o frontend |
+| [Gestão de Usuários](https://github.com/guilhermeoliveira-software/usuario) | Autenticação e gerenciamento de perfis |
+| **Agendador de Tarefas** (este) | Ciclo de vida e agendamento das tarefas |
+| [Notificação por E-mail](https://github.com/guilhermeoliveira-software/notificacao) | Envio de e-mails e lembretes |
 
-A estrutura do projeto segue as convenções de um projeto Spring Boot, com pacotes organizados por funcionalidade:
+---
+
+## 🚀 Funcionalidades
+
+- Criação, atualização e remoção de tarefas
+- Agendamento automático via **Cron Jobs** configuráveis
+- Notificações e lembretes por e-mail integrados ao serviço de notificação
+- Gerenciamento de estados das tarefas via **ENUMs**
+- Arquitetura em camadas com tratamento robusto de exceções
+- Análise de qualidade de código com **SonarQube**
+
+---
+
+## 🛠️ Tecnologias
+
+- **Java 21**
+- **Spring Boot 3**
+- **Spring Security (JWT)**
+- **MongoDB**
+- **Docker**
+- **SonarQube**
+- **Maven**
+
+---
+
+## 📁 Estrutura do Projeto
 
 ```
 src/
-├── main/
-│   ├── java/
-│   │   └── com/costadev/agendadortarefas/
-│   │       ├── business/             # Lógica de negócio e serviços
-│   │       ├── controller/           # Controladores REST
-│   │       └── infrasctruture/       # Configurações de infraestrutura e exceções
-│   └── resources/            # Arquivos de configuração e templates
-├── test/
-│   └── java/
-│       └── com/costadev/agendadortarefas/ # Testes unitários e de integração
-└── ...
+└── main/
+    └── java/
+        └── com/costadev/agendador_tarefas/
+            ├── business/          # Lógica de negócio e agendamento
+            ├── controller/        # Endpoints REST
+            └── infrastructure/    # Repositórios MongoDB e configurações
 ```
 
-## Como Executar
+---
 
-Para executar a aplicação localmente, siga os passos abaixo:
+## ⚙️ Como Executar Localmente
 
-1.  **Pré-requisitos**:
-    *   Java Development Kit (JDK) 21 ou superior.
-    *   Docker (para conteinerização).
+### Pré-requisitos
+- Java 21+
+- Docker e Docker Compose
 
-2.  **Clonar o repositório**:
+### Passos
 
-    ```bash
-    git clone https://github.com/guilhermeoliveira-software/agendador-tarefas.git
-    cd agendador-tarefas
-    ```
+```bash
+# Clone o repositório
+git clone https://github.com/guilhermeoliveira-software/agendador-tarefas.git
+cd agendador-tarefas
 
-3.  **Compilar e executar (sem Docker)**:
+# Configure as variáveis de ambiente
+# Edite o application.properties com suas credenciais locais
 
-    ```bash
-    ./gradlew build
-    java -jar build/libs/agendador-tarefas-0.0.1-SNAPSHOT.jar
-    ```
+# Suba com Docker Compose
+docker-compose up --build
+```
 
-    A aplicação estará disponível em `http://localhost:8080`.
+A API estará disponível em: `http://localhost:8081`
 
-4.  **Configuração do Docker**:
+---
 
-    O projeto inclui um `Dockerfile` para facilitar a conteinerização da aplicação:
+## 🌍 Variáveis de Ambiente
 
-    ```bash
-    docker build -t agendador-tarefas-app .
-    docker run -p 8080:8080 agendador-tarefas-app
-    ```
+| Variável | Descrição |
+|---|---|
+| `MONGODB_URI` | URI de conexão com o MongoDB |
+| `USUARIO_URL` | URL do serviço de usuários |
 
-    A aplicação estará acessível em `http://localhost:8080` dentro do contêiner.
+---
 
+## 👨‍💻 Autor
+
+**José Guilherme Da Costa Oliveira**
+- 💼 [LinkedIn](https://www.linkedin.com/in/guilherme-costa-oliveiraa/)
+- 🐙 [GitHub](https://github.com/guilhermeoliveira-software)
