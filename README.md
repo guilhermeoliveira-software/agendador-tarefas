@@ -2,7 +2,6 @@
 
 Microserviço responsável pelo gerenciamento completo do ciclo de vida das tarefas, com **agendamento automático via Cron**, notificações por e-mail e persistência em **MongoDB**.
 
-🔗 **API em produção:** [agendador-tarefas-production.up.railway.app](https://agendador-tarefas-production.up.railway.app)
 
 ---
 
